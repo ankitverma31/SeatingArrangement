@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<style>
+.nopaddingright {
+   padding-right: 0 !important;
+   margin: 0 !important;
+}
+.nopaddingleft {
+   padding-left: 0 !important;
+   margin: 0 !important;
+}
+h2{
+    background-color: #4b963c;
+    color: white;
+    text-align: right;
+}
+h1 {
+    background-color: #4CAF50;
+    color: white;
+    text-align: center;
+}
+    input[type=button] {
+    width: 10%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: right;
+    position: fixed;
+}
+
+input[type=button]:hover {
+    background-color: #45a049;
+
+}
+</style>
+</head>
+<body>
+
+
+<h1>SEATING ARRANGEMENTS</h1>
+<a href="http://127.0.0.1:8000"><input type="button" value="Go Back"></a>
+<div class="panel panel-default" style="margin-right: 20%;margin-left: 20%">
+<div class="row">
+    <div class="col-md-6 nopaddingright">
+        {% for key,value in branches.items %}
+            <h2 >ARRANGEMENTS-</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center">BRANCH</div>
+            </div>
+            {% for branch in value %}
+                <h4 style="text-align: center">{{ branch.upper }}</h4>
+                <hr>
+                {% endfor %}
+            <br><br>
+        {% endfor %}
+    </div>
+    <div class="col-md-6 nopaddingleft">
+        {% for key,value in rollnos.items %}
+            <h2 style="text-align: left">CLASSROOM : {{ key }}</h2>
+            <div class="panel panel-default">
+                <div class="panel-heading" style="text-align: center">ROLL NO</div>
+            </div>
+            {% for rollno in value %}
+                <h4 style="text-align: center">{{ rollno }}</h4>
+                <hr>
+                {% endfor %}
+            <br><br>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+</body>
+</html>
