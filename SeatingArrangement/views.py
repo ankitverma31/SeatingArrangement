@@ -15,6 +15,7 @@ def index(request):
     counter = 0
     classroom = 1
     students = 0
+    finalList = dict()
     classroomBranch = dict()  # All branches of a class
     classroomRollNo = dict()  # All roll nos of a class
     form = MyForm(request.POST or None)
@@ -43,6 +44,12 @@ def index(request):
                         classroom += 1
                 else:
                     break
+        for (k,v),(k1,v1) in zip(classroomRollNo.items(),classroomBranch.items()):
+            if k not in finalList:
+                finalList[k]=list()
+                for p,q in zip(v,v1):
+                    temp = [p,q]
+                    finalList[k].append(temp)
         return render(request, 'list.html',
-                      {'branches': classroomBranch, 'rollnos': classroomRollNo}) # passing output of program to list.html
+                      {'branches': classroomBranch, 'rollnos': classroomRollNo,'list':finalList}) # passing output of program to list.html
     return render(request, 'index.html', {"form": form}) # displaying form on index page
