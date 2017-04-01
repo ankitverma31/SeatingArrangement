@@ -48,7 +48,7 @@ input[type=button]:hover {
     @media print
 {
         .setheight{
-        height: 216px;
+        height: 185px;
     }
         .door{
             height: 200px;
@@ -75,7 +75,24 @@ input[type=button]:hover {
         <br>
         <h2 >CLASS ROOM:{{ key }}</h2><br>
         <img class="door"  src="http://dc428.4shared.com/img/-vayshJ-/s3/ClassDoor.png">
-        <div class="container" style="margin-left: 100px">
+        <div class="container" style="margin-left: 100px;border: 15px solid gray">
+        <div class="row">
+            <div class="col-xs-8 setwidth ">
+            <h2>Row I</h2>
+           </div>
+            <div class="col-xs-8 setwidth ">
+            <h2>Row II</h2>
+           </div>
+            <div class="col-xs-8 setwidth ">
+            <h2>Row III</h2>
+           </div>
+            <div class="col-xs-8 setwidth ">
+            <h2>Row IV</h2>
+           </div>
+            <div class="col-xs-8 setwidth ">
+            <h2>Row V</h2>
+           </div>
+        </div>
         {% for branch in values %}
            <div class="col-xs-8 setwidth ">
                <div class="panel panel-default">
