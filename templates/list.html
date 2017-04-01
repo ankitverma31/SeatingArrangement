@@ -6,10 +6,11 @@
 
 <style>
     .setheight{
-        height: 100px;
+        height: 60px;
     }
     .setwidth{
-        width: 190px;
+        width: 200px;
+
     }
 h2{
     color: black;
@@ -35,17 +36,48 @@ h1 {
 input[type=button]:hover {
     background-color: #45a049;
 }
+    .square {
+    background: #000;
+    width: 200px;
+    height: 50px;
+    margin: 10px;
+}
+.square h1 {
+    color: #fff;
+}
+    @media print
+{
+        .setheight{
+        height: 216px;
+    }
+        .door{
+            height: 200px;
+            width: 100px;
+        }
+    .no-print, .no-print *
+    {
+        display: none !important;
+    }
+}
+    .door{
+        width:50px;
+        float: left;
+        margin-left: 30px;
+    }
+
 </style>
 </head>
 <body>
-<h1>SEATING ARRANGEMENTS</h1>
-<a href="http://127.0.0.1:8000"><input type="button" value="Go Back"></a><br><br>
+{#<h1 class="no-print">SEATING ARRANGEMENTS</h1>#}
+{#<a class="no-print" href="http://127.0.0.1:8000"><input type="button" value="Go Back"></a><br><br>#}
 <div class="row">
     {% for key,values in list.items %}
+        <br>
         <h2 >CLASS ROOM:{{ key }}</h2><br>
-        <div class="container">
+        <img class="door"  src="http://dc428.4shared.com/img/-vayshJ-/s3/ClassDoor.png">
+        <div class="container" style="margin-left: 100px">
         {% for branch in values %}
-           <div class="col-lg-2 setwidth">
+           <div class="col-xs-8 setwidth ">
                <div class="panel panel-default">
                 <div class="panel-heading setheight" style="text-align: center">Roll No: {{ branch.0 }}<br>Branch: {{ branch.1.upper }}</div>
             </div>

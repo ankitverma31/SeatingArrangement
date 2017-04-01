@@ -10,6 +10,17 @@ class MyForm(forms.Form):
     classroom_capacity = forms.IntegerField(
         widget=forms.NumberInput(attrs={'placeholder': 'Enter Classroom Capacity...'}))
 
+def process_arrangements(value):
+    c = 0
+    temp_list=[]
+    for i in range(7):
+        temp_list.append(value[i])
+        for j in range(4):
+            i += 7
+            if i < 35:
+                temp_list.append(value[i])
+                c += 1
+    return temp_list
 
 def index(request):
     counter = 0
@@ -50,6 +61,13 @@ def index(request):
                 for p,q in zip(v,v1):
                     temp = [p,q]
                     finalList[k].append(temp)
+        for key,value in finalList.items():
+            if len(value)>=35:
+                finalList[key]=process_arrangements(value)
+            else:
+                for i in range(35-len(value)):
+                    value.append(["NA","NA"])
+                finalList[key]=process_arrangements(value)
         return render(request, 'list.html',
                       {'branches': classroomBranch, 'rollnos': classroomRollNo,'list':finalList}) # passing output of program to list.html
     return render(request, 'index.html', {"form": form}) # displaying form on index page
